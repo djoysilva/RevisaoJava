@@ -1,0 +1,74 @@
+package br.com.fiap.test;
+
+import java.sql.Connection;
+
+import javax.swing.JOptionPane;
+
+import br.com.fiap.beans.Banco;
+import br.com.fiap.beans.Telefone;
+import br.com.fiap.bo.TelefoneBO;
+import br.com.fiap.conexao.ConexaoFactory;
+import br.com.fiap.excecao.Excecao;
+
+public class Test1 {
+	public static void main(String[] args) throws Excecao{
+		
+		//aqui faremos a conexao com o banco
+		
+		Connection c = null;
+		try{
+			String user= JOptionPane.showInputDialog("Digite o usuário: ");
+			String pass= JOptionPane.showInputDialog("Digite o senha: ");
+			c = new ConexaoFactory().controlarInstancia().getConnection(user,pass);
+			System.out.println("Conexão aberta!");
+		}catch(Exception e){
+			System.out.println("Erro de conexão");
+		}finally{
+			try{
+				c.close();
+			}catch (Exception e){
+				System.out.println(e);
+				e.printStackTrace();
+			}
+		}
+		
+		//aqui iniciamos o teste para ver se os metodos estao funcionando corretamente.
+		
+		try{
+			Banco banco = new Banco();
+			Banco banco1 = new Banco();
+			Telefone telefone = new Telefone();
+			Telefone telefone1 = new Telefone();
+			TelefoneBO bo = new TelefoneBO();
+			
+			//vamos preencher dois telefones, pra ver se a busca esta correta
+			telefone.setDepartamento("Tecnologia");
+			telefone.setDdd(21);
+			telefone.setNumero("9999-9999");
+			
+			telefone1.setDepartamento("Vendas");
+			telefone1.setDdd(11);
+			telefone1.setNumero("888-8888");
+			
+			
+			banco.setCodigo(1);
+			banco.setRazaoSocial("Banco Original");
+			banco.setCnpj("0000001");
+			banco.setEndereco("São Paulo");
+			banco.setTelefone(telefone);
+			banco.setSite("www.banco.com.br");
+			
+			//aqui chamamos o metodo enviar, mandando o banco que preenchemos e a conexao
+			bo.gravar(banco, c);
+			bo.gravar(banco1, c);
+			
+			// aqui recebemos na variavel telefone o que os valores que o metodo buscar conseguir retornar
+			telefone = bo.buscar("Tecnologia", c);
+			//aqui mostramos esse valor
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+	}
+}

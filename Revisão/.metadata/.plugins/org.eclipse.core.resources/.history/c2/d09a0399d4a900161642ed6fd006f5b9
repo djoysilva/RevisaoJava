@@ -1,0 +1,22 @@
+package br.com.fiap.beans;
+
+import java.io.Serializable;
+
+public class Talao implements Serializable{
+	private ContaCorrente conta;
+	private String dataEnvio;
+	private String dataDesbloqueio;
+	private int numPrimeiraPag;
+	private int numUltimaPag;
+	public Talao(ContaCorrente conta, String dataEnvio, String dataDesbloqueio, int numPrimeiraPag, int numUltimaPag) {
+		this.conta = conta;
+		this.dataEnvio = dataEnvio;
+		this.dataDesbloqueio = dataDesbloqueio;
+		this.numPrimeiraPag = numPrimeiraPag;
+		this.numUltimaPag = numUltimaPag;
+	}
+		
+	public Talao() {
+	}
+	
+}

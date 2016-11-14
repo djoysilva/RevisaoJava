@@ -1,0 +1,15 @@
+package br.com.fiap.beans;
+
+import java.io.Serializable;
+
+public class Banco implements Serializable{
+	private static final long serialVersionUID = 1L;
+	int agencia;
+	String tipo;
+	double valorManutencao;
+	String dataAbertura;
+	String dataFechamento;
+	Cliente cliente;
+	
+	
+}

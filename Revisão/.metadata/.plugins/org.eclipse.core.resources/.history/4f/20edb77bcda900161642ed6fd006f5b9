@@ -1,0 +1,46 @@
+package br.com.fiap.beans;
+
+import java.io.Serializable;
+
+public class Cliente implements Serializable{
+	private static final long serialVersionUID = 1L;
+	private int codigo;
+	private String nome;
+	private String dataNas;
+	private String sexo;
+	private String rg;
+	private String cpf;
+	private Endereco endereco;
+	private Telefone telefone;
+	private String email;
+	private String nacionalidade;
+	private String naturalidade;
+	private String escolaridade;
+	private String empresa;
+	private double renda;
+	
+	public Cliente(int codigo, String nome, String dataNas, String sexo, String rg, String cpf, Endereco endereco,
+			Telefone telefone, String email, String nacionalidade, String naturalidade, String escolaridade,
+			String empresa, double renda) {
+		this.codigo = codigo;
+		this.nome = nome;
+		this.dataNas = dataNas;
+		this.sexo = sexo;
+		this.rg = rg;
+		this.cpf = cpf;
+		this.endereco = endereco;
+		this.telefone = telefone;
+		this.email = email;
+		this.nacionalidade = nacionalidade;
+		this.naturalidade = naturalidade;
+		this.escolaridade = escolaridade;
+		this.empresa = empresa;
+		this.renda = renda;
+	}
+
+	public Cliente() {
+	}
+	
+	
+
+}

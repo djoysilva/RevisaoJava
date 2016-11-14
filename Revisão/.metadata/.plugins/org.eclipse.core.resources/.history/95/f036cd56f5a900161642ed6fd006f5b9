@@ -1,0 +1,13 @@
+package br.com.fiap.bo;
+
+import java.sql.Connection;
+
+import br.com.fiap.beans.Banco;
+
+public class TelefoneBO extends Exception{
+	public void gravar(Banco banco, Connection conexao) throws Exception{
+		if(banco.getTelefone().getDdd() < 10 || banco.getTelefone().getDdd() > 99){
+			throw new Exception("O ddd deve ter dois digitos");
+		}
+	}
+}

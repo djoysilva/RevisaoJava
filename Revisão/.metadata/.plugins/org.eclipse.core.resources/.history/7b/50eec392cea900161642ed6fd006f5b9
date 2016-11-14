@@ -1,0 +1,10 @@
+package br.com.fiap.beans;
+
+public class Endereco {
+	private String rua;
+	private int numero;
+	private String cep;
+	private String bairro;
+	private String cidade;
+	private String estado;
+}

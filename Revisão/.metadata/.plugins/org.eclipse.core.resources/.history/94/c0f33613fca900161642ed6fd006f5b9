@@ -1,0 +1,60 @@
+package br.com.fiap.beans;
+
+import java.io.Serializable;
+
+public class Cartao implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+	
+	private int numero;
+	private String dataValidade;
+	private String dataEmissao;
+	private String tipo;
+	
+	public Cartao(int numero, String dataValidade, String dataEmissao, String tipo) {
+		this.numero = numero;
+		this.dataValidade = dataValidade;
+		this.dataEmissao = dataEmissao;
+		this.tipo = tipo;
+	}
+
+	public Cartao() {
+	}
+
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
+	public String getDataValidade() {
+		return dataValidade;
+	}
+
+	public void setDataValidade(String dataValidade) {
+		this.dataValidade = dataValidade;
+	}
+
+	public String getDataEmissao() {
+		return dataEmissao;
+	}
+
+	public void setDataEmissao(String dataEmissao) {
+		this.dataEmissao = dataEmissao;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
+}

@@ -1,0 +1,26 @@
+package br.com.fiap.test;
+
+import br.com.fiap.beans.Banco;
+import br.com.fiap.beans.Telefone;
+import br.com.fiap.bo.TelefoneBO;
+
+public class Test1 {
+	public static void main(String[] args){
+		Banco banco = new Banco();
+		Telefone telefone = new Telefone();
+		TelefoneBO bo = new TelefoneBO();
+		
+		telefone.setDepartamento("Tecnologia");
+		telefone.setDdd(21);
+		telefone.setNumero("9999-9999");
+		
+		
+		banco.setCodigo(1);
+		banco.setRazaoSocial("Banco Original");
+		banco.setCnpj("0000001");
+		banco.setEndereco("São Paulo");
+		banco.setTelefone(telefone);
+		banco.setSite("www.banco.com.br");
+		
+	}
+}

@@ -1,0 +1,39 @@
+package br.com.fiap.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import br.com.fiap.beans.Banco;
+import br.com.fiap.beans.Telefone;
+
+
+public class TelefoneDAO{
+	Banco banco = new Banco();
+	Telefone telefone = new Telefone();
+	
+	public void gravar(Banco banco, Connection conexao) throws Exception{
+		PreparedStatement estrutura = conexao.prepareStatement("INSERT INTO TB_TELEFONE (DDD, NUMERO) VALUES (?,?)");
+		estrutura.setInt(1, banco.getTelefone().getDdd());
+		estrutura.setString(2, banco.getTelefone().getNumero());
+		estrutura.execute();
+		estrutura.close();
+	}
+	
+	public Telefone exibir(String departamento, Connection conexao) throws Exception{
+		PreparedStatement estrutura = conexao.prepareStatement("SELECT * FROM TB_TELEFONE WHERE (DEPARTAMENTO) = ?");
+		estrutura.setString(1, departamento);
+		ResultSet resultadoBusca = estrutura.executeQuery();
+		
+		telefone.setDepartamento(resultadoBusca.getString("DEPARTAMENTO"));
+		telefone.setDdd(resultadoBusca.getShort("DDD"));
+		telefone.setNumero(resultadoBusca.getString("NUMERO"));
+		
+		resultadoBusca.close();
+		estrutura.close();
+		
+		return telefone; 
+		
+		
+	}
+}

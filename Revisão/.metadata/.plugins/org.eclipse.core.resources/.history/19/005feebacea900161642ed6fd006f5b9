@@ -1,0 +1,8 @@
+package br.com.fiap.beans;
+
+import java.io.Serializable;
+
+public class Telefone implements Serializable {
+	short ddd;
+	String numero;
+}

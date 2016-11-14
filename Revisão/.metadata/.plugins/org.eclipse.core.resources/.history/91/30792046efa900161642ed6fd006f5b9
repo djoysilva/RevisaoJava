@@ -1,0 +1,15 @@
+package br.com.fiap.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import br.com.fiap.beans.Telefone;
+
+public class TelefoneDAO{
+	Telefone telefone = new Telefone();
+	
+	public void gravar(Telefone telefone, Connection conexao) throws Exception{
+		PreparedStatement statment = conexao.prepareStatement("INSERT INTO TB_TELEFONE (DDD, NUMERO) VALUES (?,?)");
+		
+	}
+}

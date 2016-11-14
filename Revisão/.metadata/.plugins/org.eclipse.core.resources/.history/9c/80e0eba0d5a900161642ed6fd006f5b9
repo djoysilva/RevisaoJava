@@ -1,0 +1,10 @@
+package br.com.fiap.beans;
+
+import java.io.Serializable;
+
+public class Cartao implements Serializable {
+	private int numero;
+	private String dataValidade;
+	private String dataEmissao;
+	private String tipo;
+}

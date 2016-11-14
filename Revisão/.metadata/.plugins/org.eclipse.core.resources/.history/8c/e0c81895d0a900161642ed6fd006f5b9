@@ -1,0 +1,26 @@
+package br.com.fiap.beans;
+
+import java.io.Serializable;
+
+public class Agencia implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+	private int numero;
+	private String nome;
+	private Endereco endereço;
+	private Telefone telefone;
+	private Banco banco;
+	
+	public Agencia(int numero, String nome, Endereco endereço, Telefone telefone, Banco banco) {
+		this.numero = numero;
+		this.nome = nome;
+		this.endereço = endereço;
+		this.telefone = telefone;
+		this.banco = banco;
+	}
+	
+	public Agencia() {
+	}
+	
+	
+}

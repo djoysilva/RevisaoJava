@@ -1,0 +1,66 @@
+package br.com.fiap.beans;
+
+import java.io.Serializable;
+
+public class Talao implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
+	private ContaCorrente conta;
+	private String dataEnvio;
+	private String dataDesbloqueio;
+	private int numPrimeiraPag;
+	private int numUltimaPag;
+	public Talao(ContaCorrente conta, String dataEnvio, String dataDesbloqueio, int numPrimeiraPag, int numUltimaPag) {
+		this.conta = conta;
+		this.dataEnvio = dataEnvio;
+		this.dataDesbloqueio = dataDesbloqueio;
+		this.numPrimeiraPag = numPrimeiraPag;
+		this.numUltimaPag = numUltimaPag;
+	}
+		
+	public Talao() {
+	}
+
+	public ContaCorrente getConta() {
+		return conta;
+	}
+
+	public void setConta(ContaCorrente conta) {
+		this.conta = conta;
+	}
+
+	public String getDataEnvio() {
+		return dataEnvio;
+	}
+
+	public void setDataEnvio(String dataEnvio) {
+		this.dataEnvio = dataEnvio;
+	}
+
+	public String getDataDesbloqueio() {
+		return dataDesbloqueio;
+	}
+
+	public void setDataDesbloqueio(String dataDesbloqueio) {
+		this.dataDesbloqueio = dataDesbloqueio;
+	}
+
+	public int getNumPrimeiraPag() {
+		return numPrimeiraPag;
+	}
+
+	public void setNumPrimeiraPag(int numPrimeiraPag) {
+		this.numPrimeiraPag = numPrimeiraPag;
+	}
+
+	public int getNumUltimaPag() {
+		return numUltimaPag;
+	}
+
+	public void setNumUltimaPag(int numUltimaPag) {
+		this.numUltimaPag = numUltimaPag;
+	}
+	
+	
+}

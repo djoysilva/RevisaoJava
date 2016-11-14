@@ -1,0 +1,76 @@
+package br.com.fiap.beans;
+
+import java.io.Serializable;
+
+public class ContaCorrente implements Serializable{
+	private static final long serialVersionUID = 1L;
+	int agencia;
+	String tipo;
+	double valorManutencao;
+	String dataAbertura;
+	String dataFechamento;
+	Cliente cliente;
+	
+	public ContaCorrente(int agencia, String tipo, double valorManutencao, String dataAbertura, String dataFechamento,
+			Cliente cliente) {
+		super();
+		this.agencia = agencia;
+		this.tipo = tipo;
+		this.valorManutencao = valorManutencao;
+		this.dataAbertura = dataAbertura;
+		this.dataFechamento = dataFechamento;
+		this.cliente = cliente;
+	}
+	
+	public ContaCorrente() {
+	}
+
+	public int getAgencia() {
+		return agencia;
+	}
+
+	public void setAgencia(int agencia) {
+		this.agencia = agencia;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public double getValorManutencao() {
+		return valorManutencao;
+	}
+
+	public void setValorManutencao(double valorManutencao) {
+		this.valorManutencao = valorManutencao;
+	}
+
+	public String getDataAbertura() {
+		return dataAbertura;
+	}
+
+	public void setDataAbertura(String dataAbertura) {
+		this.dataAbertura = dataAbertura;
+	}
+
+	public String getDataFechamento() {
+		return dataFechamento;
+	}
+
+	public void setDataFechamento(String dataFechamento) {
+		this.dataFechamento = dataFechamento;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+		
+}

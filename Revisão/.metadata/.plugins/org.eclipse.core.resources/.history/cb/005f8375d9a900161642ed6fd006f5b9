@@ -1,0 +1,8 @@
+package conexao;
+
+public final class ConexaoFactory {
+	private static ConexaoFactory conexao = null;
+	
+	public static
+	
+}

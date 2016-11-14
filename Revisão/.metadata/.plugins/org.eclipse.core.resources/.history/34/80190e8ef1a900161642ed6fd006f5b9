@@ -1,0 +1,33 @@
+package br.com.fiap.beans;
+
+import java.io.Serializable;
+
+public class Telefone implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
+	private short ddd;
+	private String numero;
+	private String departamento;
+	
+	public Telefone(short ddd, String numero, String departamento) {
+		this.ddd = ddd;
+		this.numero = numero;
+		this.departamento = departamento;
+	}
+	
+	public Telefone() {
+	}
+	
+	public short getDdd() {
+		return ddd;
+	}
+	public void setDdd(short ddd) {
+		this.ddd = ddd;
+	}
+	public String getNumero() {
+		return numero;
+	}
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+}

@@ -1,0 +1,23 @@
+package br.com.fiap.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import br.com.fiap.beans.Banco;
+
+
+public class TelefoneDAO{
+	Banco banco = new Banco();
+	
+	public void gravar(Banco banco, Connection conexao) throws Exception{
+		PreparedStatement estrutura = conexao.prepareStatement("INSERT INTO TB_TELEFONE (DDD, NUMERO) VALUES (?,?)");
+		estrutura.setInt(1, banco.getTelefone().getDdd());
+		estrutura.setString(2, banco.getTelefone().getNumero());
+		estrutura.execute();
+		estrutura.close();
+	}
+	
+	public void exibir(String departamento, Connection conexao) throws Exception{
+		PreparedStatement estrutura = conexao.prepareStatement("SELECT ")
+	}
+}

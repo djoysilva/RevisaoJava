@@ -1,0 +1,11 @@
+package br.com.fiap.beans;
+
+import java.io.Serializable;
+
+public class Talao implements Serializable{
+	private ContaCorrente conta;
+	private String dataEnvio;
+	private String dataDesbloqueio;
+	private int numPrimeiraPag;
+	private int numUltimaPag;
+}

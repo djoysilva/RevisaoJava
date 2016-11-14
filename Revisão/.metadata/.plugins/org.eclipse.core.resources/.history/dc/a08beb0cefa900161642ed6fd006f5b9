@@ -1,0 +1,12 @@
+package br.com.fiap.dao;
+
+import br.com.fiap.beans.Telefone;
+
+public class TelefoneDAO{
+	Telefone telefone = new Telefone();
+	
+	public void gravar(Telefone telefone){
+		
+		
+	}
+}

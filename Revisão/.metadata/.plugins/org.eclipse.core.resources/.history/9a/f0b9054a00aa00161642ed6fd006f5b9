@@ -1,0 +1,106 @@
+package br.com.fiap.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import br.com.fiap.beans.Banco;
+import br.com.fiap.beans.Telefone;
+
+//Aqui eu inicio a documentação, deve ter uma inicial explicando a classe e depois cada método
+/**
+ * Classe TelefoneDAO que realiza a conexão com o banco para gravar e exibir Objetos da tabela TB_TELEFONE
+ * @author Joyce Mara da Silva
+ * @version1
+ * @see beans/Telefone.java
+ * @see beans/TElefoneBo.java
+ * @see beans/Banco.java
+ * */
+
+public class TelefoneDAO{
+	//essas variáveis criei fora dos metodos para facilitar, elas podem ser usadas em varios métodos da classe TelefoneDAO
+	Banco banco = new Banco();
+	Telefone telefone = new Telefone();
+
+	
+	//documentação do metodo GRAVAR
+	/**
+	 * Método que <b>adiciona</b> ums tupla na tabela TB_TELEFONE.
+	 * @param banco Um objeto do tipo Banco e conexao do tipo Connection
+	 * @return sem retorno
+	 * @author Joyce Silva
+	 * @see beans/Banco.java
+	 * @see bo/TelefoneBO.java
+	 */
+	
+	/*criando o metodo que grava diretamente o objeto recebido 
+	 * diretamente no banco, como o professor pediu no exercício apenas o Telefone, vamos focar nisso.
+	 * Primeiro criei no banco de dados uma tabela simples, com DDD, numero e Departamento.
+	 * aqui irei gravar as informações recebidas na classe de teste e enviada para cá depois de passar pelo BO
+	 */
+	public void gravar(Banco banco, Connection conexao) throws Exception{
+		/*primeiro eu crio a estrutura que irá realizar as alterações ou buscas no banco de dados (PreparedStatement)
+		 * e depois coloco o comando SQL que desejo, nesse caso, o INSERT e os '?' representam os valores que vou inserir
+		 * recebidos como parametro no metodo, neste caso - o objeto Banco.
+		 */
+		
+		PreparedStatement estrutura = conexao.prepareStatement("INSERT INTO TB_TELEFONE (DDD, NUMERO, DEPARTAMENTO) VALUES (?,?,?)");
+		
+		/*Como só nos interessa o telefone, temos que acessar a classe telefone, que esta dentro da classe Banco,
+		 * primeiro realizamos o comando da estrutura (estrutura.setTIPO_DA_VARIAVEL_RECEBIDA),
+		 * e para identificar qual coluna recebera qual valor 
+		 * utilizamos numeros que correspondem aos '?' respectivamente do comando SQL utilizado acima.
+		 * Depois resgatamos com o get o valor da variavel que queremos salvar no banco.
+		 * Nesse caso tivemos que acessar duas classes para chegar até o valor que queriamos.
+		 */
+		
+		estrutura.setInt(1, banco.getTelefone().getDdd());
+		estrutura.setString(2, banco.getTelefone().getNumero());
+		estrutura.setString(3, banco.getTelefone().getDepartamento());
+		
+		//por fim, executamos e fechamos a estrutura. isso é muito importante.
+		estrutura.execute();
+		estrutura.close();
+	}
+	
+	//documentação do metodo EXIBIR
+		/**
+		 * Método que <b>busca</b>  uma tupla na tabela TB_TELEFONE.
+		 * @param departamento do tipo String e conexao do tipo Connection
+		 * @return Telefone
+		 * @author Joyce Silva
+		 * @see beans/Telefone.java
+		 * @see bo/TelefoneBO.java
+		 */
+	public Telefone buscar(String departamento, Connection conexao) throws Exception{
+		/*Aqui criamos novamente a estrutura para conversar com o banco de dados atraves
+		 * de comandos sql, nessa vamos fazer uma busca, por isso o SELECT
+		 * como a tabela é pequena, usei '*', mas nao é o aconselhavel, como vcs sabem.
+		 */
+		PreparedStatement estrutura = conexao.prepareStatement("SELECT * FROM TB_TELEFONE WHERE (DEPARTAMENTO) = ?");
+		
+		/*
+		 * Aqui fizemos a comparação da busca já no comando sql, então,
+		 * o metodo busca o telefone, a partir do departamento recebido nos paramentos do metodo
+		 */
+		estrutura.setString(1, departamento);
+		
+		/*Agora precisamos criar uma variavel que nos ajudará a receber os valores do banco
+		 * e coloca-los no objeto telefone (que instanciamos lá no inicio da classe) e
+		 * poderemos retornar esse objeto já com o valor daquilo que o usuario busca
+		 */
+		ResultSet resultadoBusca = estrutura.executeQuery();
+		
+		//aqui realizamos os comando para resgatar os valores da tabela do banco  e coloca-los no objeto telefone
+		telefone.setDdd(resultadoBusca.getShort("DDD"));
+		telefone.setNumero(resultadoBusca.getString("NUMERO"));
+		telefone.setDepartamento(resultadoBusca.getString("DEPARTAMENTO"));
+		
+		// e por fim sempre temos que fechar primeiro o resultSet e depois a estrutura
+		resultadoBusca.close();
+		estrutura.close();
+		
+		return telefone; 
+
+	}
+}
